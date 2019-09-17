@@ -30,11 +30,28 @@ public class HelloWorldController {
 
   @PostMapping("/sum")
   ResponseSum sum(@RequestBody Integer[] data) {
-    ResponseSum res = new ResponseSum();
-    for (Integer value : data) {
-      res.sum += value.intValue();
-    }
-    return res;
+        ResponseSum res = new ResponseSum();
+        for (Integer value : data) {
+        res.sum += value.intValue();
+        }
+        return res;
+  }
+
+  class ResponseMultiplication{
+        public int multiplication;
+
+        ResponseMultiplication(){}
+  }
+
+  @PostMapping("/multiplication")
+  ResponseMultiplication multiplication(@RequestBody Integer[] data) {
+        ResponseMultiplication response = new ResponseMultiplication();
+        response.multiplication = 1;
+        for (Integer value:data) {
+            response.multiplication *= value.intValue();
+        }
+
+        return response;
   }
 
 }

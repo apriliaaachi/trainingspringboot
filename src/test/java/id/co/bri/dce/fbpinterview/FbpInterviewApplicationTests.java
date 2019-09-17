@@ -48,4 +48,18 @@ public class FbpInterviewApplicationTests {
       assertEquals("{\"sum\":6}", content);
   }
 
+  @Test
+  public void getMultiplicationApi() throws Exception {
+      String uri = "/multiplication";
+      MvcResult mvcResult = this.mockMvc.perform(post(uri)
+              .content("[1,3,4]")
+              .contentType(MediaType.APPLICATION_JSON)
+              .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+      int status = mvcResult.getResponse().getStatus();
+      assertEquals(200, status);
+      String content = mvcResult.getResponse().getContentAsString();
+      assertEquals("{\"multiplication\":12}", content);
+  }
+
 }
